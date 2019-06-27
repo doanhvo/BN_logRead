@@ -1447,11 +1447,9 @@ namespace ReadFile_RegisterVN
         /// <param name="lstObject"></param>
         /// <returns></returns>
         public static List<SoatVeTransactionModel> FilterList(List<string> lstTransID, List<SoatVeTransactionModel> lstObject)
-        {
-            List<SoatVeTransactionModel> lstResult = new List<SoatVeTransactionModel>();
-
-
-            return lstResult;
+        {           
+            lstObject.RemoveAll(Item => !lstTransID.Contains(Item.ImageID));
+            return lstObject;
         }
     }
 }
