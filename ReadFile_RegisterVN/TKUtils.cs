@@ -1439,6 +1439,19 @@ namespace ReadFile_RegisterVN
             }
             return lstResult;
         }
+        
+        /// <summary>
+        /// Hàm loai bỏ các đối tượng SoatVeTransactionModel có ImageID không nằm trong ds lstTransID
+        /// </summary>
+        /// <param name="lstTransID"></param>
+        /// <param name="lstObject"></param>
+        /// <returns></returns>
+        public static List<SoatVeTransactionModel> FilterList(List<string> lstTransID, List<SoatVeTransactionModel> lstObject)
+        {
+            List<SoatVeTransactionModel> lstResult = new List<SoatVeTransactionModel>();
 
+
+            return lstResult;
+        }
     }
 }
