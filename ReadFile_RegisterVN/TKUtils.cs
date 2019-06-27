@@ -1375,5 +1375,41 @@ namespace ReadFile_RegisterVN
         {
 
         }
+
+        /// <summary>
+        /// Hàm đọc file log cắt từng row đưa vào list để xử lý
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public List<string> ParseData_FromFile(string filePath)
+        {
+            List<string> lstResult = new List<string>();
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return lstResult;
+        }
+
+        /// <summary>
+        /// Input là List<string> từ function ParseData_FromFile
+        /// </summary>
+        /// <returns></returns>
+        public List<LogFileModel> ParseToObject(List<string> lstString)
+        {
+            List<LogFileModel> lstResult = new List<LogFileModel>();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return lstResult;
+        }
     }
 }
