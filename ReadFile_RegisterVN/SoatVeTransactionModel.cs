@@ -795,4 +795,25 @@ namespace ReadFile_RegisterVN
             return numRows;
         }
     }
+
+    /// <summary>
+    /// VD: 2019-06-27 00:57:20.381 : [ProcessingVehicleQueue - _vehicleQueue.Count: 1, Vehicle type: 2, TransID: 20190627005715021 ]
+    /// </summary>
+    public class LogFileModel
+    {
+        /// <summary>
+        /// Phần thời gian: 2019-06-27 00:57:20.381
+        /// </summary>
+        public DateTime TimeLog { get; set; }
+
+        /// <summary>
+        /// Tên hàm: "ProcessingVehicleQueue"
+        /// </summary>
+        public string MethodName { get; set; }
+
+        /// <summary>
+        /// Phần nội dung sau dấu "-": _vehicleQueue.Count: 1, Vehicle type: 2, TransID: 20190627005715021
+        /// </summary>
+        public string Content { get; set; }
+    }
 }
