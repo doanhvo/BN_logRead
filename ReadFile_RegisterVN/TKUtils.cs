@@ -1381,15 +1381,20 @@ namespace ReadFile_RegisterVN
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public List<string> ParseData_FromFile(string filePath)
+        public static List<string> ParseData_FromFile(string filePath)
         {
             List<string> lstResult = new List<string>();
             try
             {
+                // Read a text file line by line.  
+                lstResult = File.ReadAllLines(filePath).ToList();
+
             }
             catch (Exception ex)
             {
-
+                TKUtils.WriteLogFile(
+                   System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString() + "." +
+                   System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
             return lstResult;
         }
@@ -1398,16 +1403,39 @@ namespace ReadFile_RegisterVN
         /// Input là List<string> từ function ParseData_FromFile
         /// </summary>
         /// <returns></returns>
-        public List<LogFileModel> ParseToObject(List<string> lstString)
+        public static List<LogFileModel> ParseToObject(List<string> lstString)
         {
             List<LogFileModel> lstResult = new List<LogFileModel>();
             try
             {
+                
+                foreach (var item in lstString)
+                {
+                    if (string.IsNullOrWhiteSpace(item))
+                        continue;
+                    LogFileModel logfile = new LogFileModel();
+                    var time  = item.Substring(0, 23); 
 
+                    logfile.TimeLog = DateTime.Parse(time);
+                    var method = item.Remove(0, 27);
+                    var methods = method.Replace("[", "").Replace("]", "").Split('-');
+                    if (methods != null && methods.Count() > 1)
+                    {
+                        //xóa 1 khoảng trắng đầu tiên
+                        logfile.MethodName = methods[0].Remove(1,1);
+                        logfile.Content = methods[1].Remove(1, 1);
+                    }
+
+                    lstResult.Add(logfile);
+
+
+                }
             }
             catch (Exception ex)
             {
-
+                TKUtils.WriteLogFile(
+                  System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString() + "." +
+                  System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
             return lstResult;
         }
