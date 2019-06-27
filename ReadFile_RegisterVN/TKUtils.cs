@@ -1422,8 +1422,8 @@ namespace ReadFile_RegisterVN
                     if (methods != null && methods.Count() > 1)
                     {
                         //xóa 1 khoảng trắng đầu tiên
-                        logfile.MethodName = methods[0].Remove(1,1);
-                        logfile.Content = methods[1].Remove(1, 1);
+                        logfile.MethodName = methods[0].Remove(0,1);
+                        logfile.Content = methods[1].Remove(0, 1);
                     }
 
                     lstResult.Add(logfile);
